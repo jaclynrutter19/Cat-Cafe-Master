@@ -1,27 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>OSU - CS 340 - Introduction to Databases - Flask Demo Project</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Cat Cafe</title>
 </head>
 <body>
-    <h1>CS 340 - Introduction to Databases</h1>
-    <p>This is a demonstration project created to show students how to create a Flask app and connect it to a MySQL database.</p>
+    <header>
+        <p class="company"><a href="index.html">Cat Cafe</a></p>
+        <nav>
+            <a href="foster_cat">Foster/Cat Relationships</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Home Page</h1>
+    </main>
+    <footer>
+        <p>&#169; 2023 Olivia Russell & Jaclyn Rutter</p>
+    </footer>
 </body>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Location</th>
-        <th>Favorite Language</th>
-    </tr>
-    <tbody>
-    {% for item in people %}
-    <tr>
-        <td>{{item['name']}}</td>
-        <td>{{item['age']}}</td>
-        <td>{{item['location']}}</td>
-        <td>{{item['favorite_color']}}</td>
-    </tr>
-    {% endfor %}
-    </table>
 </html>

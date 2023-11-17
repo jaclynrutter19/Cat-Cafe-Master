@@ -30,11 +30,11 @@ mysql = MySQL(app)
 # have homepage route to /people by default for convenience, generally this will be your home route with its own template
 @app.route("/")
 def home():
-    return redirect("/people")
+    return render_template("main.j2")
 
 
 # route for people page
-@app.route("/people", methods=["POST", "GET"])
+@app.route("/foster_cat", methods=["POST", "GET"])
 def people():
     # Separate out the request methods, in this case this is for a POST
     # insert a person into the bsg_people entity
@@ -77,7 +77,7 @@ def people():
                 mysql.connection.commit()
 
             # redirect back to people page
-            return redirect("/people")
+            return redirect("/foster_cat")
 
     # Grab bsg_people data so we send it to our template to display
     if request.method == "GET":
@@ -94,7 +94,7 @@ def people():
         homeworld_data = cur.fetchall()
 
         # render edit_people page passing our query data and homeworld data to the edit_people template
-        return render_template("people.j2", data=data, homeworlds=homeworld_data)
+        return render_template("foster_cat.j2", data=data, homeworlds=homeworld_data)
 
 
 # route for delete functionality, deleting a person from bsg_people,
@@ -108,7 +108,7 @@ def delete_people(id):
     mysql.connection.commit()
 
     # redirect back to people page
-    return redirect("/people")
+    return redirect("/foster_cat")
 
 
 # route for edit functionality, updating the attributes of a person in bsg_people
@@ -172,7 +172,7 @@ def edit_people(id):
                 mysql.connection.commit()
 
             # redirect back to people page after we execute the update query
-            return redirect("/people")
+            return redirect("/foster_cat")
 
 
 # Listener
