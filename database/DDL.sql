@@ -152,7 +152,7 @@ VALUES ((SELECT customer_id FROM Customers WHERE customer_id = 2), (SELECT cat_i
 INSERT INTO Cafe_Transactions (customer_id, employee_id, order_date, total_price)
 VALUES ((SELECT customer_id FROM Customers WHERE customer_id = 1), (SELECT employee_id FROM Employees WHERE employee_id = 1), '2023-08-21', 6.00),
 ((SELECT customer_id FROM Customers WHERE customer_id = 2), (SELECT employee_id FROM Employees WHERE employee_id = 2), '2023-10-15', 3.25),
-((SELECT customer_id FROM Customers WHERE customer_id = 4), (SELECT employee_id FROM Employees WHERE employee_id = 2), '2023-09-22', 7.50);
+((SELECT customer_id FROM Customers WHERE customer_id = 3), (SELECT employee_id FROM Employees WHERE employee_id = 2), '2023-09-22', 7.50);
 
 -- INSERT order into Product_Orders table
 INSERT INTO Product_Orders (transaction_id, product_id, quantity)

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cat Cafe</title>
+</head>
+<body>
+    <header>
+        <p class="company"><a href="index.html">Cat Cafe</a></p>
+        <nav>
+            <a href="cats.html">Cats</a>
+            <a href="cafe-products.html">Cafe Products</a>
+            <a href="employees.html">Employees</a>
+            <a href="customers.html">Customers</a>
+            <a href="foster-parents.html">Foster Parents</a>
+            <a href="adoptions.html">Adoptions</a>
+            <a href="cafe-transactions.html">Cafe Transactions</a>
+            <a href="product-orders.html">Product Orders</a>
+            <a href="foster-cat-relationships.html">Foster/Cat Relationships</a>
+        </nav>
+    </header>
+    <main>
+        <div class="content-stripe hero-stripe">
+            <h1>Manage Cats</h1>
+        </div>
+        <div class="content-stripe table-stripe">
+            <table>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Cat ID</th>
+                  <th>Name</th>
+                  <th>DOB</th>
+                  <th>Weight</th>
+                  <th>Color</th>
+                  <th>Sex</th>
+                  <th>Adoptable</th>
+                  <th>Last Vet Check</th>
+                </tr>
+                <tr>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                  <td>1</td>
+                  <td>Lilly</td>
+                  <td>2006-08-27</td>
+                  <td>6.0</td>
+                  <td>Grey</td>
+                  <td>Female</td>
+                  <td>Yes</td>
+                  <td>2023-10-03</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                    <td>2</td>
+                  <td>Jasper</td>
+                  <td>2015-05-12</td>
+                  <td>9.2</td>
+                  <td>Black</td>
+                  <td>Female</td>
+                  <td>No</td>
+                  <td>2023-02-05</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                    <td>3</td>
+                    <td>Pumpkin</td>
+                    <td>2020-11-10</td>
+                    <td>11.6</td>
+                    <td>Orange</td>
+                    <td>Male</td>
+                    <td>No</td>
+                    <td>2023-04-11</td>
+                  </tr>
+                  <tr>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                    <td>4</td>
+                    <td>Juniper</td>
+                    <td>2023-04-15</td>
+                    <td>4.0</td>
+                    <td>Tabby</td>
+                    <td>Male</td>
+                    <td>No</td>
+                    <td>2023-09-23</td>
+                  </tr>
+                  <tr>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                    <td>5</td>
+                    <td>Bean</td>
+                    <td>2009-06-07</td>
+                    <td>13.4</td>
+                    <td>Calico</td>
+                    <td>Female</td>
+                    <td>Yes</td>
+                    <td>2023-07-25</td>
+                  </tr>
+              </table>
+        </div>
+        <div class="content-stripe add-stripe">
+            <h2>Add Cat</h2>
+            <div class="form-region">
+                <form>
+                    <div class="group-one">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="dob">DOB:</label><br>
+                    <input type="text" id="dob" name="dob">
+                    <label for="weight">Weight:</label><br>
+                    <input type="text" id="weight" name="weight">
+                    <label for="color">Color:</label><br>
+                    <input type="text" id="color" name="color">
+                    </div>
+                    <div class="group-two">
+                    <label for="sex">Sex:</label><br>
+                    <input type="text" id="sex" name="sex">
+                    <label for="adoptable">Adoptable:</label><br>
+                    <input type="text" id="adoptable" name="adoptable">
+                    <label for="vet">Last Vet Check:</label><br>
+                    <input type="text" id="vet" name="vet">
+                    </div>
+                    <div class="group-three">
+                        <input class="btn" type="submit" value="Save">
+                        <input class="btn" type="button" value="Cancel">
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="content-stripe update-stripe">
+            <h2>Update Cat</h2>
+            <div class="form-region">
+                <form>
+                    <div class="group-one">
+                        <label for="cat-id">Cat ID:</label>
+                        <select name="cat-id" id="cat-id">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <label for="name">Name:</label><br>
+                        <input type="text" id="name" name="name"><br>
+                        <label for="dob">DOB:</label><br>
+                        <input type="text" id="dob" name="dob">
+                        <label for="weight">Weight:</label><br>
+                        <input type="text" id="weight" name="weight">
+                        <label for="color">Color:</label><br>
+                        <input type="text" id="color" name="color">
+                    </div>
+                    <div class="group-two">
+                        <label for="sex">Sex:</label><br>
+                        <input type="text" id="sex" name="sex">
+                        <label for="adoptable">Adoptable:</label><br>
+                        <input type="text" id="adoptable" name="adoptable">
+                        <label for="vet">Last Vet Check:</label><br>
+                        <input type="text" id="vet" name="vet">
+                    </div>
+                    <div class="group-three">
+                    <input class="btn" type="submit" value="Save">
+                    <input class="btn" type="button" value="Cancel">
+                    </div>
+                </form>
+              </div>
+        </div>
+        <div class="content-stripe delete-stripe">
+            <h2>Delete Cat</h2>
+            <fieldset>Are you sure you want to delete {{example_cat}}?</fieldset>
+            <div class="group-three">
+                <input class="btn" type="submit" value="Delete">
+                <input class="btn" type="button" value="Cancel">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&#169; 2023 Olivia Russell & Jaclyn Rutter</p>
+    </footer>
+</body>
+</html>

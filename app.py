@@ -1,4 +1,5 @@
-# Sample Flask application for a BSG database, snapshot of BSG_people
+# Sample Flask application for a Foster Cat Relationship database, snapshot of Foster_Cat_Relationships
+# Citation: Original code is reformatted by the bsg_people example and flask tutorial https://github.com/osu-cs340-ecampus/flask-starter-app/tree/master/bsg_people_app
 
 from flask import Flask, render_template, json, redirect
 from flask_mysqldb import MySQL
@@ -18,160 +19,156 @@ app = Flask(__name__)
 # app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
 # database connection info
-app.config["MYSQL_HOST"] = "classmysql.engr.oregonstate.edu"
-app.config["MYSQL_USER"] = "cs340_rutterj"
-app.config["MYSQL_PASSWORD"] = "9585"
-app.config["MYSQL_DB"] = "cs340_rutterj"
-app.config["MYSQL_CURSORCLASS"] = "DictCursor"
+app.config["MYSQL_HOST"] = ""
+app.config["MYSQL_USER"] = ""
+app.config["MYSQL_PASSWORD"] = ""
+app.config["MYSQL_DB"] = ""
+app.config["MYSQL_CURSORCLASS"] = ""
 
 mysql = MySQL(app)
 
 # Routes
-# have homepage route to /people by default for convenience, generally this will be your home route with its own template
+# have homepage route to /main by default for convenience, generally this will be your home route with its own template
 @app.route("/")
 def home():
     return render_template("main.j2")
 
 
-# route for people page
+# route for foster cat relationships page
 @app.route("/foster_cat", methods=["POST", "GET"])
-def people():
+def foster_cat_relationships():
     # Separate out the request methods, in this case this is for a POST
-    # insert a person into the bsg_people entity
+    # insert a foster cat relationship into the foster cat relationships entity
     if request.method == "POST":
-        # fire off if user presses the Add Person button
-        if request.form.get("Add_Person"):
+        # fire off if user presses the Add foster cat relationship button
+        if request.form.get("Add_Foster_Cat_Relationship"):
             # grab user form inputs
-            fname = request.form["fname"]
-            lname = request.form["lname"]
-            homeworld = request.form["homeworld"]
-            age = request.form["age"]
+            cat_id = request.form["cat_id"]
+            foster_parent_id = request.form["foster_parent_id"]
 
-            # account for null age AND homeworld
-            if age == "" and homeworld == "0":
-                # mySQL query to insert a new person into bsg_people with our form inputs
-                query = "INSERT INTO bsg_people (fname, lname) VALUES (%s, %s)"
+            # account for null cat_id AND foster_parent_id
+            if cat_id == "" and foster_parent_id == "0":
+                # mySQL query to insert a new foster cat relationship into Foster_Cat_Relationships with our form inputs
+                query = "INSERT INTO Foster_Cat_Relationships (cat_id, foster_parent_id) VALUES (%s, %s)"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
-            # account for null homeworld
-            elif homeworld == "0":
-                query = "INSERT INTO bsg_people (fname, lname, age) VALUES (%s, %s,%s)"
+            # account for null foster_parent_id
+            elif foster_parent_id == "0":
+                query = "INSERT INTO Foster_Cat_Relationships (cat_id, foster_parent_id) VALUES (%s, %s,%s)"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, age))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
-            # account for null age
-            elif age == "":
-                query = "INSERT INTO bsg_people (fname, lname, homeworld) VALUES (%s, %s,%s)"
+            # account for null cat_id
+            elif cat_id == "":
+                query = "INSERT INTO Foster_Cat_Relationships (cat_id, foster_parent_id) VALUES (%s, %s,%s)"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, homeworld))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
             # no null inputs
             else:
-                query = "INSERT INTO bsg_people (fname, lname, homeworld, age) VALUES (%s, %s,%s,%s)"
+                query = "INSERT INTO Foster_Cat_Relationships (cat_id, foster_parent_id) VALUES (%s, %s)"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, homeworld, age))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
-            # redirect back to people page
+            # redirect back to foster cat relationships page
             return redirect("/foster_cat")
 
-    # Grab bsg_people data so we send it to our template to display
+    # Grab Foster_Cat_Relationships data so we send it to our template to display
     if request.method == "GET":
-        # mySQL query to grab all the people in bsg_people
-        query = "SELECT bsg_people.id, fname, lname, bsg_planets.name AS homeworld, age FROM bsg_people LEFT JOIN bsg_planets ON homeworld = bsg_planets.id"
+        # mySQL query to grab all the foster cat relationships in Foster_Cat_Relationships
+        query = "SELECT Foster_Cat_Relationships.id, cat_id, foster_parent_id, Foster_Cat_Relationships.name AS foster_parent_id, cat_id FROM Foster_Cat_Relationships LEFT JOIN Foster_Cat_Relationships ON cat_id = Foster_Cat_Relationships.id"
         cur = mysql.connection.cursor()
         cur.execute(query)
         data = cur.fetchall()
 
         # mySQL query to grab planet id/name data for our dropdown
-        query2 = "SELECT id, name FROM bsg_planets"
+        query2 = "SELECT cat_id, foster_parent_id FROM Foster_Cat_Relationships"
         cur = mysql.connection.cursor()
         cur.execute(query2)
-        homeworld_data = cur.fetchall()
+        foster_parent_id_data = cur.fetchall()
 
-        # render edit_people page passing our query data and homeworld data to the edit_people template
-        return render_template("foster_cat.j2", data=data, homeworlds=homeworld_data)
+        # render edit_foster_cats_relationship page passing our query data and foster parent data to the foster cat relationships template
+        return render_template("foster_cat.j2", data=data)
 
 
-# route for delete functionality, deleting a person from bsg_people,
-# we want to pass the 'id' value of that person on button click (see HTML) via the route
-@app.route("/delete_people/<int:id>")
-def delete_people(id):
-    # mySQL query to delete the person with our passed id
-    query = "DELETE FROM bsg_people WHERE id = '%s';"
+# route for delete functionality, deleting a foster cat relationship from Foster_Cat_Relationships,
+# we want to pass the 'id' value of that foster cat relationship on button click (see HTML) via the route
+@app.route("/delete_foster_cat_relationship/<int:id>")
+def delete_foster_cat_relationship(id):
+    # mySQL query to delete the foster cat relationship with our passed id
+    query = "DELETE FROM Foster_Cat_Relationships WHERE id = '%s';"
     cur = mysql.connection.cursor()
     cur.execute(query, (id,))
     mysql.connection.commit()
 
-    # redirect back to people page
+    # redirect back to foster cat relationships page
     return redirect("/foster_cat")
 
 
-# route for edit functionality, updating the attributes of a person in bsg_people
-# similar to our delete route, we want to the pass the 'id' value of that person on button click (see HTML) via the route
-@app.route("/edit_people/<int:id>", methods=["POST", "GET"])
-def edit_people(id):
+# route for edit functionality, updating the attributes of a foster cat relationship in Foster_Cat_Relationships
+# similar to our delete route, we want to the pass the 'id' value of that foster cat relationship on button click (see HTML) via the route
+@app.route("/edit_foster_cat_relationship/<int:id>", methods=["POST", "GET"])
+def edit_foster_cat_relationship(id):
     if request.method == "GET":
-        # mySQL query to grab the info of the person with our passed id
-        query = "SELECT * FROM bsg_people WHERE id = %s" % (id)
+        # mySQL query to grab the info of the foster cat relationship with our passed id
+        query = "SELECT * FROM Foster_Cat_Relationships WHERE id = %s" % (id)
         cur = mysql.connection.cursor()
         cur.execute(query)
         data = cur.fetchall()
 
-        # mySQL query to grab planet id/name data for our dropdown
-        query2 = "SELECT id, name FROM bsg_planets"
+        # mySQL query to grab cat & foster id/name data for our dropdown
+        query2 = "SELECT cat_id, foster_parent_id FROM Foster_Cat_Relationships"
         cur = mysql.connection.cursor()
         cur.execute(query2)
-        homeworld_data = cur.fetchall()
+        foster_parent_data = cur.fetchall()
 
-        # render edit_people page passing our query data and homeworld data to the edit_people template
-        return render_template("edit_people.j2", data=data, homeworlds=homeworld_data)
+        # render edit_foster_cat_ page passing our query data and cat/foster data to the edit_foster_cat template
+        return render_template("edit_foster_cat.j2", data=data)
 
     # meat and potatoes of our update functionality
     if request.method == "POST":
-        # fire off if user clicks the 'Edit Person' button
-        if request.form.get("Edit_Person"):
+        # fire off if user clicks the 'Edit foster cat relationship' button
+        if request.form.get("Edit_Foster_Cat_Relationship"):
             # grab user form inputs
-            id = request.form["personID"]
-            fname = request.form["fname"]
-            lname = request.form["lname"]
-            homeworld = request.form["homeworld"]
-            age = request.form["age"]
+            id = request.form["fosterCatRelationshipID"]
+            cat_id = request.form["cat_id"]
+            foster_parent_id = request.form["foster_parent_id"]
 
-            # account for null age AND homeworld
-            if (age == "" or age == "None") and homeworld == "0":
-                # mySQL query to update the attributes of person with our passed id value
-                query = "UPDATE bsg_people SET bsg_people.fname = %s, bsg_people.lname = %s, bsg_people.homeworld = NULL, bsg_people.age = NULL WHERE bsg_people.id = %s"
+            # account for null cat_id AND foster_cat_id
+            if (cat_id == "" or cat_id == "None") and foster_parent_id == "0":
+                # mySQL query to update the attributes of foster cat relationship with our passed id value
+                query = "UPDATE Foster_Cat_Relationships SET Foster_Cat_Relationships.cat_id = %s, Foster_Cat_Relationships.foster_parent_id = %s"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, id))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
-            # account for null homeworld
-            elif homeworld == "0":
-                query = "UPDATE bsg_people SET bsg_people.fname = %s, bsg_people.lname = %s, bsg_people.homeworld = NULL, bsg_people.age = %s WHERE bsg_people.id = %s"
+            # account for null foster_parent_id
+            elif foster_parent_id == "0":
+                query = "UPDATE Foster_Cat_Relationships SET Foster_Cat_Relationships.cat_id = %s, Foster_Cat_Relationships.foster_parent_id = %s"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, age, id))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
-            # account for null age
-            elif age == "" or age == "None":
-                query = "UPDATE bsg_people SET bsg_people.fname = %s, bsg_people.lname = %s, bsg_people.homeworld = %s, bsg_people.age = NULL WHERE bsg_people.id = %s"
+            # account for null cat_id
+            elif cat_id == "" or cat_id == "None":
+                query = "UPDATE Foster_Cat_Relationships SET Foster_Cat_Relationships.cat_id = %s, Foster_Cat_Relationships.foster_parent_id = %s"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, homeworld, id))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
             # no null inputs
             else:
-                query = "UPDATE bsg_people SET bsg_people.fname = %s, bsg_people.lname = %s, bsg_people.homeworld = %s, bsg_people.age = %s WHERE bsg_people.id = %s"
+                query = "UPDATE Foster_Cat_Relationships SET Foster_Cat_Relationships.cat_id = %s, Foster_Cat_Relationships.foster_parent_id = %s"
                 cur = mysql.connection.cursor()
-                cur.execute(query, (fname, lname, homeworld, age, id))
+                cur.execute(query, (cat_id, foster_parent_id))
                 mysql.connection.commit()
 
-            # redirect back to people page after we execute the update query
+            # redirect back to foster cat relationships page after we execute the update query
             return redirect("/foster_cat")
 
 
