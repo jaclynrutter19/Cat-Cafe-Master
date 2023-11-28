@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cat Cafe</title>
+</head>
+<body>
+    <header>
+        <p class="company"><a href="index.html">Cat Cafe</a></p>
+        <nav>
+            <a href="cats.html">Cats</a>
+            <a href="cafe-products.html">Cafe Products</a>
+            <a href="employees.html">Employees</a>
+            <a href="customers.html">Customers</a>
+            <a href="foster-parents.html">Foster Parents</a>
+            <a href="adoptions.html">Adoptions</a>
+            <a href="cafe-transactions.html">Cafe Transactions</a>
+            <a href="product-orders.html">Product Orders</a>
+            <a href="foster-cat-relationships.html">Foster/Cat Relationships</a>
+        </nav>
+    </header>
+    <main>
+        <div class="content-stripe hero-stripe">
+            <h1>Manage Customers</h1>
+        </div>
+        <div class="content-stripe table-stripe">
+            <table>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Customer ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                </tr>
+                <tr>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                  <td>1</td>
+                  <td>Pedro</td>
+                  <td>Pascal</td>
+                  <td>ppascal@gmail.com</td>
+                  <td>541-123-4567</td>
+                </tr>
+                <tr>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                  <td>2</td>
+                  <td>Bella</td>
+                  <td>Ramsey</td>
+                  <td>bramsey@gmail.com</td>
+                  <td>541-890-1234</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                    <td>3</td>
+                    <td>Gabriel</td>
+                    <td>Luna</td>
+                    <td>gluna@gmail.com</td>
+                    <td>541-982-1235</td>
+                  </tr>
+              </table>
+        </div>
+        <div class="content-stripe add-stripe">
+            <h2>Add Customer</h2>
+            <div class="form-region">
+                <form>
+                    <div class="group-one">
+                    <label for="fname">First Name:</label><br>
+                    <input type="text" id="fname" name="fname"><br>
+                    <label for="lname">Last Name:</label><br>
+                    <input type="text" id="lname" name="lname">
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email">
+                    <label for="phone">Phone:</label><br>
+                    <input type="text" id="phone" name="phone">
+                    </div>
+                    <div class="group-three">
+                        <input class="btn" type="submit" value="Save">
+                        <input class="btn" type="button" value="Cancel">
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="content-stripe update-stripe">
+            <h2>Update Customer</h2>
+            <div class="form-region">
+                <form>
+                    <div class="group-one">
+                        <label for="customer-id">Customer ID:</label>
+                        <select name="customer-id" id="customer-id">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="fname">First Name:</label><br>
+                        <input type="text" id="fname" name="fname"><br>
+                        <label for="lname">Last Name:</label><br>
+                        <input type="text" id="lname" name="lname">
+                        <label for="email">Email:</label><br>
+                        <input type="text" id="email" name="email">
+                        <label for="phone">Phone:</label><br>
+                        <input type="text" id="phone" name="phone">
+                        </div>
+                    <div class="group-three">
+                    <input class="btn" type="submit" value="Save">
+                    <input class="btn" type="button" value="Cancel">
+                    </div>
+                </form>
+              </div>
+        </div>
+        <div class="content-stripe delete-stripe">
+            <h2>Delete Customer</h2>
+            <fieldset>Are you sure you want to delete {{example}}?</fieldset>
+            <div class="group-three">
+                <input class="btn" type="submit" value="Delete">
+                <input class="btn" type="button" value="Cancel">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&#169; 2023 Olivia Russell & Jaclyn Rutter</p>
+    </footer>
+</body>
+</html>

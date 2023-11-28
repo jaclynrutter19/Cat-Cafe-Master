@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cat Cafe</title>
+</head>
+<body>
+    <header>
+        <p class="company"><a href="index.html">Cat Cafe</a></p>
+        <nav>
+            <a href="cats.html">Cats</a>
+            <a href="cafe-products.html">Cafe Products</a>
+            <a href="employees.html">Employees</a>
+            <a href="customers.html">Customers</a>
+            <a href="foster-parents.html">Foster Parents</a>
+            <a href="adoptions.html">Adoptions</a>
+            <a href="cafe-transactions.html">Cafe Transactions</a>
+            <a href="product-orders.html">Product Orders</a>
+            <a href="foster-cat-relationships.html">Foster/Cat Relationships</a>
+        </nav>
+    </header>
+    <main>
+        <div class="content-stripe hero-stripe">
+            <h1>Manage Cafe Transactions</h1>
+        </div>
+        <div class="content-stripe table-stripe">
+            <table>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Transaction ID</th>
+                  <th>Customer ID</th>
+                  <th>Employee ID</th>
+                  <th>Order Date</th>
+                  <th>Total Price</th>
+                </tr>
+                <tr>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>2023-08-21</td>
+                  <td>6.00</td>
+                </tr>
+                <tr>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2023-10-15</td>
+                  <td>3.25</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>2023-09-22</td>
+                    <td>7.50</td>
+                </tr>
+              </table>
+        </div>
+        <div class="content-stripe add-stripe">
+            <h2>Add Cafe Transaction</h2>
+            <div class="form-region">
+                <form>
+                    <div class="group-one">
+                    <label for="customer-id">Customer ID:</label><br>
+                    <input type="text" id="customer-id" name="customer-id"><br>
+                    <label for="employee-id">Employee ID:</label><br>
+                    <input type="text" id="employee-id" name="employee-id">
+                    <label for="order-date">Order Date:</label><br>
+                    <input type="text" id="order-date" name="order-date">
+                    <label for="total-price">Total Price:</label><br>
+                    <input type="text" id="total-price" name="total-price">
+                    </div>
+                    <div class="group-three">
+                        <input class="btn" type="submit" value="Save">
+                        <input class="btn" type="button" value="Cancel">
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="content-stripe update-stripe">
+            <h2>Update Cafe Transaction</h2>
+            <div class="form-region">
+                <form>
+                    <div class="group-one">
+                        <label for="transaction-id">Transaction ID:</label>
+                        <select name="transaction-id" id="transaction-id">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="customer-id">Customer ID:</label><br>
+                        <input type="text" id="customer-id" name="customer-id"><br>
+                        <label for="employee-id">Employee ID:</label><br>
+                        <input type="text" id="employee-id" name="employee-id">
+                        <label for="order-date">Order Date:</label><br>
+                        <input type="text" id="order-date" name="order-date">
+                        <label for="total-price">Total Price:</label><br>
+                        <input type="text" id="total-price" name="total-price">
+                    </div>
+                    <div class="group-three">
+                        <input class="btn" type="submit" value="Save">
+                        <input class="btn" type="button" value="Cancel">
+                        </div>
+                </form>
+              </div>
+        </div>
+        <div class="content-stripe delete-stripe">
+            <h2>Delete Cafe Transaction</h2>
+            <fieldset>Are you sure you want to delete {{example}}?</fieldset>
+            <div class="group-three">
+                <input class="btn" type="submit" value="Delete">
+                <input class="btn" type="button" value="Cancel">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&#169; 2023 Olivia Russell & Jaclyn Rutter</p>
+    </footer>
+</body>
+</html>
